@@ -1,0 +1,6 @@
+rootProject.name = 'customer-details-processor'
+include 'customer-details-api'
+include 'customer-details-file-importer'
+include 'test'
+
+
