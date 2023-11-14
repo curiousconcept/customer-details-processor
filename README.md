@@ -2,9 +2,12 @@
 
 ## Introduction
 
-* Command line application accepts a file and loads it into Web Application via REST http as requested
+* Command line application accepts a file and loads it into a web app via REST http as requested
 * This is gradle multi module project where "customer-details-api" is the web application and "customer-details-file-importer" 
 is a fat jar command line application. They share "customer-details-domain" for an API contract.
+* UTF-8 is respected
+* Blank or malformed csv records should not affect the overall processing
+* Each file processing will result in report file generated in the same directory with the same file prefix
 
 ## Prerequisites
 
