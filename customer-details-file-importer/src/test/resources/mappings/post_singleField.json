@@ -1,0 +1,16 @@
+{
+  "request": {
+    "method": "POST",
+    "urlPath": "/v1/customers",
+    "bodyPatterns": [
+      {
+        "equalToJson": {
+          "customer_ref": "singleFieldsingleFieldsingleFieldSff"
+        }
+      }
+    ]
+  },
+  "response": {
+    "status": 400
+  }
+}

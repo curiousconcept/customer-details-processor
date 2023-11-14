@@ -1,0 +1,49 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot'
+    id 'io.spring.dependency-management'
+    id 'com.google.cloud.tools.jib'
+}
+
+group = 'com.aalechnovic.customerdetailsprocessor'
+version = '1.0-SNAPSHOT'
+description = 'API for storing customer details'
+
+
+dependencies {
+
+    implementation project(path: ':customer-details-domain')
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+
+    // Persistence
+    implementation 'org.springframework.boot:spring-boot-starter-data-r2dbc'
+    implementation 'io.asyncer:r2dbc-mysql:1.0.2'
+    implementation 'com.mysql:mysql-connector-j:8.1.0' // driver for flyway
+    implementation 'org.flywaydb:flyway-mysql' // for flyway mysql support otherwise doesn't know how to handle jdbc url
+    implementation 'org.flywaydb:flyway-core'
+
+    testImplementation 'org.testcontainers:junit-jupiter'
+    testImplementation 'org.testcontainers:mysql:1.19.1'
+
+    // Web
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
+    implementation project(path: ':customer-details-domain')
+
+    // Test environment
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'io.projectreactor:reactor-test'
+
+    testImplementation 'org.springframework.boot:spring-boot-testcontainers'
+    testImplementation 'org.testcontainers:junit-jupiter'
+    testImplementation 'org.testcontainers:mysql:1.19.1'
+}
+
+jib {
+    to {
+        image = 'customer-details-api'
+    }
+    from {
+        image = 'amazoncorretto:17-alpine'
+    }
+}

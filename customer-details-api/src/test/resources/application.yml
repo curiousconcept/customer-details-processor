@@ -1,0 +1,12 @@
+spring:
+  r2dbc:
+    username: ${container.database.username}
+    password: ${container.database.password}
+    url: ${container.database.url.r2dbc}
+  flyway:
+    url:  ${container.database.url.jdbc}
+    user: ${container.database.username}
+    password: ${container.database.password}
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+    default-property-inclusion: non_null

@@ -1,0 +1,23 @@
+{
+  "request": {
+    "method": "POST",
+    "urlPath": "/v1/customers",
+    "bodyPatterns": [
+      {
+        "equalToJson": {
+          "customer_ref": "UTF8ĖДŪ-字汉字c4-11e1-840d-7b25c5ee775a"
+        }
+      }
+    ]
+  },
+  "response": {
+    "status": 201,
+    "headers": {
+      "Content-Type": "application/json; charset=UTF-8",
+      "Location" : "localhost:{{request.requestLine.port}}/v1/customers/UTF8ĖДŪ-字汉字c4-11e1-840d-7b25c5ee775a"
+    },
+    "transformers": [
+      "response-template"
+    ]
+  }
+}

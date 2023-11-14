@@ -1,0 +1,20 @@
+{
+  "scenarioName": "External faults scenario",
+  "requiredScenarioState": "500_SERVER_ERROR",
+  "newScenarioState": "RESPOND_OK",
+  "request": {
+    "method": "POST",
+    "urlPath": "/v1/customers",
+    "bodyPatterns": [
+      {
+        "matchesJsonPath": {
+          "expression": "$.customer_ref",
+          "contains": "FAULT666-12c4-11e1-840d-7b25c5ee775a"
+        }
+      }
+    ]
+  },
+  "response": {
+    "status": "500"
+  }
+}

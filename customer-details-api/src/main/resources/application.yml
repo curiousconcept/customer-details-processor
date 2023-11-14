@@ -1,0 +1,15 @@
+spring:
+#  r2dbc:
+#    username: local
+#    password: local
+#    url: r2dbc:mysql://localhost:8082/flyway-test-db
+#  flyway:
+#    url: jdbc:mysql://localhost:8082/flyway-test-db
+#    locations: classpath:db/postgres/migration
+
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+    default-property-inclusion: non_null
+server:
+  error:
+    include-message: always

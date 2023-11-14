@@ -1,0 +1,29 @@
+{
+  "request": {
+    "method": "POST",
+    "urlPath": "/v1/customers",
+    "bodyPatterns": [
+      {
+        "equalToJson": {
+          "customer_ref": "fl20fb90-12c4-11e1-840d-7b25c5ee775a",
+          "customer_name": "Amy Wang",
+          "address_line_one": "2 Baker Street",
+          "town": "Shady Town",
+          "county": "Impeccable County",
+          "country": "Wonderland",
+          "post_code": "WO9 591"
+        }
+      }
+    ]
+  },
+  "response": {
+    "status": 201,
+    "headers": {
+      "Content-Type": "application/json",
+      "Location" : "localhost:{{request.requestLine.port}}/v1/customers/fl20fb90-12c4-11e1-840d-7b25c5ee775a"
+    },
+    "transformers": [
+      "response-template"
+    ]
+  }
+}

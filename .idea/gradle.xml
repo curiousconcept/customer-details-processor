@@ -10,8 +10,8 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/customer-details-api" />
+            <option value="$PROJECT_DIR$/customer-details-domain" />
             <option value="$PROJECT_DIR$/customer-details-file-importer" />
-            <option value="$PROJECT_DIR$/test" />
           </set>
         </option>
       </GradleProjectSettings>

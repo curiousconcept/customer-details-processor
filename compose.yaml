@@ -1,0 +1,46 @@
+services:
+  db:
+    image: mysql:8.1.0
+    cap_add:
+      - SYS_NICE
+    restart: always
+    environment:
+      - MYSQL_DATABASE=main
+      - MYSQL_ROOT_PASSWORD=asfgASFA42
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost", "-uroot"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 30s
+    ports:
+      - '3306:3306'
+    volumes:
+      - db:/var/lib/mysql
+  api:
+    container_name: customer-details-api
+    build:
+      context: ./
+    image: customer-details-api
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - 8080:8080
+    environment:
+      SERVER_PORT: 8080
+      SPRING_R2DBC_URL: r2dbc:mysql://db:3306/main
+      SPRING_R2DBC_USERNAME: root
+      SPRING_R2DBC_PASSWORD: asfgASFA42
+
+      SPRING_FLYWAY_URL: jdbc:mysql://db:3306/main
+      SPRING_FLYWAY_USER: root
+      SPRING_FLYWAY_PASSWORD: asfgASFA42
+
+    links:
+      - db
+    volumes:
+      - ./:/src
+volumes:
+  db:
+    driver: local
